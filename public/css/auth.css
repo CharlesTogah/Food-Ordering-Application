@@ -1,0 +1,71 @@
+.login-form {
+  width: 20rem;
+  max-width: 90%;
+  margin: auto;
+  display: block;
+  margin: auto;
+  left: 30px;
+  padding-top: 150px;
+}
+
+body, html {
+  height: 100%;
+}
+
+.form-move{
+  background-image: url("https://lh3.googleusercontent.com/proxy/TFBhMmIT3Np82AmNqhgXuctwf7RPdU9enfVRi-JFbg9kRgHsC2QZwH9OlCazKLrEng6zmF-bp83d99PHLPnp8Cr32g9yetCuVDwV95_uAoZTjVO0Firm7aLRqCownYRQZjr1");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  }
+
+.Sign-up-form{
+  background-image: url("http://www.oasis-hotel.net/wp-content/uploads/2019/10/GettyImages-923588674-1920x1080-930x620.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.tDiv {
+  display: flex;
+  justify-content: center;
+  margin: 5px 30px 20px;
+}
+
+tr, td {
+  padding: 10px 30px;
+  text-align: center;
+  margin: 10px;
+  font-size: 20px;
+}
+table, td{
+  border: 1px solid black;
+}
+
+table {
+  margin-left: 15%;;
+}
+
+.allusers {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 200px 200px 200px 200px  200px;
+  border: 1px sold black;
+  margin: 20px;
+  padding-left: 50%;
+  
+}
+
+.users {
+  display: flex;
+  flex-direction: row;
+
+}
+
+#name{
+  color:black;
+}
+
+

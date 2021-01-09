@@ -1,0 +1,60 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+ 
+<body>
+   <%- include('../includes/navigation.ejs') %>
+ 
+    <main>
+      
+        <form class="login-form" action="/add-user" method="POST">
+            <div class="form-control">
+                <label for="name">Name of user</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div class="form-control">
+                <label for="email">E-mail of user</label>
+                <input type="email" name="email" id="email">
+            </div>
+ 
+            <div class="form-control">
+                <label for="usertype">Usertype</label>
+               <select name="usertype" id="usertype">
+                   <option value="">-None-</option>
+                   <option value="trainee">Trainee</option>
+                   <option value="staff">Staff</option>
+                   <option value="manager">Manager</option>
+                   <option value="admin">Admin</option>
+               </select>
+            </div>
+            <div class="form-control">
+                <label for="userid">User_ID</label>
+                <input type="text" name="userid" id="userid">
+            </div>
+            <div class="form-control">
+                <label for="department">Department</label>
+                <select name="department" id="department">
+                    <option value="">-None-</option>
+                    <option value="sd">Software Development</option>
+                    <option value="sfccd">SalesForce</option>
+                    <option value="ds">Data Science</option>
+                    <option value="os">Software Testing</option>
+                </select>
+             </div>
+             <div class="form-control">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <div class="form-control">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" name="confirmPassword" id="confirmPassword">
+            </div>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button class="btn" type="submit">Signup</button>
+        </form>
+    </main>
+ 
+<%- include('../includes/footer.ejs') %>
+</body>
+</html>

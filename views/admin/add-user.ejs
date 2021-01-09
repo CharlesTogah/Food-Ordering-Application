@@ -1,0 +1,94 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+ 
+<body>
+ 
+ 
+    <main>
+      
+        <div class="users">
+
+         <div>
+            <form class="login-form" action="/admin/add-user" method="POST">
+                
+                    <label for="username">Name of user</label><br><br>
+                    <input type="text" name="username" id="username" placeholder=""><br><br>
+                
+                    <label for="email">E-mail of user</label><br><br>
+                    <input type="email" name="email" id="email"><br><br>
+                
+                    <label for="role">Usertype</label><br><br>
+                   <select name="role" id="role">
+                       <option value="">-None-</option>
+                       <option value="admin">admin</option>
+                       <option value="staff">staff</option>
+                       <option value="trainee">trainee</option>
+                       <option value="manager">manager</option>
+                   </select>
+               
+                 <label for="password">Password</label><br><br>
+                    <input type="password" name="password" id="password"><br><br>
+                
+                    <label for="confirmPassword">Confirm Password</label><br><br>
+                    <input type="password" name="confirmPassword" id="confirmPassword"><br><br>
+                
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button class="btn" type="submit">Signup</button>
+            </form>
+            </div>
+            
+            <div>
+                <div class="allusers">
+                    <div> <h3>Admin </h3></div>
+                <div> <h3>Staff </h3></div>
+                <div> <h3> Trainee </h3></div>
+                <div> <h3> Managers </h3></div>
+                <div> <h3 style="font-weight: bolder;">Total </h3></div>
+         
+                <div> <h3> <%= adminCounter %> </h3></div>
+                <div> <h3> <%= staffCounter %>  </h3></div>
+                <div> <h3> <%= traineeCounter %>  </h3></div>
+                <div> <h3> <%= managerCounter %>   </h3></div>
+                <div> <h3 > <%= user.length %> </h3></div>
+                </div>
+        
+                <div class="tDiv">
+                    <% if (user.length > 0) { %>
+                    
+                            <table>
+                                <tr>
+                 
+                                    <th>Name</th>
+                                    <th>Role</th>
+                                    <th>Email</th>
+                                    
+                                </tr>
+                                <% for (var people = 0; people < user.length; people++) { %>
+                 
+                                <tr>
+                 
+                                    <td><%= user[people].username %></td>
+                                    <td><%= user[people].role %> </td>
+                                    <td><%= user[people].email %></td>
+                                    <td>
+                                        <form action="/admin/deleteuser/<%= user[people]._id %> " method="GET">
+                                            <button id="<%= user[people]._id %>" type="submit" class="btn">Remove</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <% } %> 
+                               
+                            </table>
+                        
+                    <% } %> 
+        
+                </div>
+            </div>
+        </div>
+    </main>
+ 
+<%- include('../includes/end.ejs') %>
+</body>
+</html>

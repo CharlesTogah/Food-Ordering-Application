@@ -1,0 +1,58 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/orders.css">
+    </head>
+
+    <body id="main-orders">
+        <%- include('../includes/nav.ejs') %>
+        <main>
+            <% if (orders.length <= 0) { %>
+                <h1>No order made yet!</h1>
+                <% } else { %>
+                <table>
+                       <h1> Order List</h1>
+                       <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Order no</th>
+                            <th>Food name</th>
+                            <th>Quantity</th>
+                            
+    
+                        </tr>
+                       </thead>
+               <tbody>
+                
+                    <% orders.forEach(order => { %>
+                <tr>
+                    <td><%= order.user.username %></td>
+                    <td># <%= order._id %></td>
+                    <% order.products.forEach(p => { %>
+                    <td><%= p.product.title %></td>
+                    <td><%= p.quantity %></td>
+                
+              <td>
+               <div>
+                <input type="hidden" value="<%= p.product._id %>" name="productId">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button class="btn" type="#">Complete Order</button>
+            </div>
+        </td>
+        <td>
+            <div>
+                <form action="/delorders/<%= order._id %>" method="GET">
+                    <input type="hidden" value="<%= p.product._id %>" name="productId">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button class="btn" type="submit">Delete Order</button>
+                </form>
+            </div>
+        </td>
+                        <% }); %>
+    </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+                <% } %>
+                
+                
+        </main>
+        <%- include('../includes/end.ejs') %>
